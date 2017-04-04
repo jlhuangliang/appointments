@@ -1,5 +1,5 @@
 server:
-  port: 8083
+  port: 8082
 
 eureka:
   client:
@@ -15,12 +15,16 @@ authserver:
 # Note that the "/user" endpoint needs to provide the principle of the logged in user (/me endpoint)
 spring:
   oauth2:
-    resource:
+    resource: 
       userInfoUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/me
-      preferTokenInfo: false
-
+      preferTokenInfo: false 
+    client:
+      accessTokenUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/token
+      userAuthorizationUri: http://${authserver.hostname}:${authserver.port}/${authserver.contextPath}/oauth/authorize
+      clientId: client
+      
 ---
-# comments-webservice instance when used on Docker
+# task-webservice instance when used on Docker
 spring:
   profiles: docker
 eureka:
