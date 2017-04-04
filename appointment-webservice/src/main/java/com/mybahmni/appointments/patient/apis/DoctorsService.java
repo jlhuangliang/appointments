@@ -1,15 +1,14 @@
 package com.mybahmni.appointments.patient.apis;
 
+import com.mybahmni.appointments.patient.model.DoctorResource;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
-import com.mybahmni.appointments.patient.model.CommentCollectionResource;
-import com.mybahmni.appointments.patient.model.CommentResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Calendar;
+import java.util.Date;
 
 /**
  * The {@link HystrixCommand} works since Spring makes a proxy to intercept the
@@ -23,7 +22,7 @@ import java.util.Calendar;
  *
  */
 @Service
-public class CommentsService {
+public class DoctorsService {
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -58,32 +57,22 @@ public class CommentsService {
 	 * request to the called service quickly.</li>
 	 * </ol>
 	 * 
-	 * @param taskId
+	 * @param doctorId
 	 * @return
 	 */
 	@HystrixCommand(fallbackMethod = "getFallbackCommentsForTask", commandProperties = {
 			@HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE"),
 			@HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
 			@HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000") })
-	public CommentCollectionResource getCommentsForTask(String taskId) {
-		// Get the comments for this task
-		return restTemplate.getForObject(String.format("http://doctor-webservice/comments/%s", taskId),
-				CommentCollectionResource.class);
+	public DoctorResource getDoctorForAppointment(String doctorId) {
+		String url = String.format("http://doctor-webservice/doctors/%s", doctorId);
+		return restTemplate.getForObject(url, DoctorResource.class);
 
 	}
 
-	/**
-	 * Gets the default comments for task. Need to add the suppress warning
-	 * since the method is not directly used by the class.
-	 *
-	 * @return the default comments for task
-	 */
 	@SuppressWarnings("unused")
-	private CommentCollectionResource getFallbackCommentsForTask(String taskId) {
-		// Get the default comments
-		CommentCollectionResource comments = new CommentCollectionResource();
-		comments.addComment(new CommentResource(taskId, "default comment", Calendar.getInstance().getTime()));
+	private DoctorResource getFallbackCommentsForTask(String taskId) {
 
-		return comments;
+		return new DoctorResource("default", "default doctor", new Date());
 	}
 }
