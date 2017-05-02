@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { AppointmentModel } from '../models/appointment.model';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AppointmentApi {

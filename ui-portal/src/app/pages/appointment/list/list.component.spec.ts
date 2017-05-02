@@ -3,25 +3,25 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppointmentListComponent } from './list.component';
 import { MockRouterLinkDirective } from '../../../mock/router-link.directive';
 import { AppointmentApi } from '../../../apis/appointment.api';
-import { appointments } from '../../../mock/appointments';
 import 'rxjs/add/observable/of';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { AppointmentModel } from '../../../models/appointment.model';
-import { Observable } from 'rxjs/Observable';
+import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
+import { DoctorApi } from '../../../apis/doctor.api';
 
-describe('AppointmentListComponent', () => {
+fdescribe('AppointmentListComponent', () => {
   let component: AppointmentListComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<AppointmentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppointmentListComponent, MockRouterLinkDirective],
-      providers: [{
-        provide: AppointmentApi,
-        useValue: {query: () => Observable.of(appointments).map(AppointmentModel.from)},
-      }],
+      declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe],
+      providers: [
+        {
+          provide: AppointmentApi,
+          useClass: MockAppintmentApi,
+        }, DoctorApi],
     })
       .compileComponents();
   }));
