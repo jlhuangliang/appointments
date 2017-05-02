@@ -8,6 +8,8 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
 import { DoctorApi } from '../../../apis/doctor.api';
+import { ConnectionBackend } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 fdescribe('AppointmentListComponent', () => {
   let component: AppointmentListComponent;
@@ -18,10 +20,10 @@ fdescribe('AppointmentListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe],
       providers: [
-        {
-          provide: AppointmentApi,
-          useClass: MockAppintmentApi,
-        }, DoctorApi],
+        {provide: ConnectionBackend, useClass: MockBackend},
+        AppointmentApi,
+        DoctorApi,
+      ],
     })
       .compileComponents();
   }));
