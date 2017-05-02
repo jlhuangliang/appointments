@@ -15,6 +15,6 @@ describe('Appointment Model', () => {
   it('AppointmentModel.from should generate an AppointModel array from rawData', () => {
     const items = AppointmentModel.from(appointments);
     expect(items[1].doctorId).toEqual('d002');
-    expect(items[1].start.toISOString()).toEqual('2017-05-01T08:00:00.000Z');
+    expect(items[1].start).toEqual(new Date('2017-05-01T08:00:00.000Z'));
   });
 });
