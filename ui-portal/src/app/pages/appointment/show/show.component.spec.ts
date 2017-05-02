@@ -9,6 +9,7 @@ import { AppointmentApi } from '../../../apis/appointment.api';
 import { ActivatedRoute } from '@angular/router';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
 
 describe('AppointmentShowComponent', () => {
   let component: AppointmentShowComponent;
@@ -17,7 +18,7 @@ describe('AppointmentShowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppointmentShowComponent, MockRouterLinkDirective],
+      declarations: [AppointmentShowComponent, MockRouterLinkDirective, DoctorNamePipe],
       providers: [
         {
           provide: AppointmentApi,

@@ -9,7 +9,6 @@ describe('DoctorApi', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, InMemoryWebApiModule.forRoot(InMemoryApiService)],
-      providers: [DoctorApi],
     });
   });
 

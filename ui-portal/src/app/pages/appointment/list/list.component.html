@@ -17,7 +17,7 @@
         {{item.appointmentId}}
       </a>
     </td>
-    <td>{{item.doctorId}}</td>
+    <td>{{item.doctorId|doctorName|async}}</td>
     <td>{{item.patientId}}</td>
     <td>{{item.start|date}}</td>
     <td>{{item.end|date}}</td>

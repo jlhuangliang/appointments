@@ -13,6 +13,7 @@ import { AppointmentApi } from './apis/appointment.api';
 import { DoctorApi } from './apis/doctor.api';
 import { PatientApi } from './apis/patient.api';
 import { MockRouterLinkDirective } from './mock/router-link.directive';
+import { DoctorNamePipe } from './pipes/doctor-name.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MockRouterLinkDirective } from './mock/router-link.directive';
     AppointmentListComponent,
     AppointmentShowComponent,
     MockRouterLinkDirective,
+    DoctorNamePipe,
   ],
   imports: [
     BrowserModule,
