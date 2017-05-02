@@ -1,0 +1,12 @@
+<dl *ngIf="item">
+  <dt>ID</dt>
+  <dd>{{item.appointmentId}}</dd>
+  <dt>Doctor</dt>
+  <dd>{{item.doctorId}}</dd>
+  <dt>Patient</dt>
+  <dd>{{item.patientId}}</dd>
+  <dt>Start Time</dt>
+  <dd>{{item.start|date}}</dd>
+  <dt>End Time</dt>
+  <dd id="end-time">{{item.end|date}}</dd>
+</dl>

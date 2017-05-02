@@ -1,15 +1,27 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AppointmentListComponent } from './pages/appointment/list/list.component';
+import { AppointmentShowComponent } from './pages/appointment/show/show.component';
 
 const routes: Routes = [
   {
     path: '',
-    children: []
-  }
+    pathMatch: 'full',
+    redirectTo: '/appointments',
+  },
+  {
+    path: 'appointments/:id',
+    component: AppointmentShowComponent,
+  },
+  {
+    path: 'appointments',
+    component: AppointmentListComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
