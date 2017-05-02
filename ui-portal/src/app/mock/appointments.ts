@@ -1,5 +1,6 @@
 export const appointments = [
   {
+    id: 'a001',
     appointmentId: 'a001',
     doctorId: 'd001',
     patientId: 'p001',
@@ -7,6 +8,7 @@ export const appointments = [
     end: '2017-05-01T15:00+0800',
   },
   {
+    id: 'a002',
     appointmentId: 'a002',
     doctorId: 'd002',
     patientId: 'p002',
