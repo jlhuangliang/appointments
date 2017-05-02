@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryApiService } from './mock/in-memory-api.service';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    InMemoryWebApiModule.forRoot(InMemoryApiService),
     AppRoutingModule
   ],
   providers: [],
