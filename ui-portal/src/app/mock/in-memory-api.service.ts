@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { appointments } from './appointments';
 import { doctors } from './doctors';
+import { patients } from './patients';
 
 @Injectable()
 export class InMemoryApiService implements InMemoryDbService {
@@ -9,6 +10,6 @@ export class InMemoryApiService implements InMemoryDbService {
   }
 
   createDb(): {} {
-    return {appointments, doctors};
+    return {appointments, doctors, patients};
   }
 }
