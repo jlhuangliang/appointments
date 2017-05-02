@@ -39,7 +39,7 @@ dependencies {
 }
 
 group = 'anilallewar'
-mainClassName = 'com.rohitghatol.microservices.config.Application'
+mainClassName = 'com.mybahmni.appointments.config.Application'
 
 sourceCompatibility = 1.7
 targetCompatibility = 1.7
