@@ -17,7 +17,11 @@
         {{item.appointmentId}}
       </a>
     </td>
-    <td>{{item.doctorId|doctorName|async}}</td>
+    <td>
+      <a [routerLink]="['/doctors', item.doctorId]">
+        {{item.doctorId|doctorName|async}}
+      </a>
+    </td>
     <td>{{item.patientId}}</td>
     <td>{{item.start|date}}</td>
     <td>{{item.end|date}}</td>
