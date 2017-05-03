@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryApiService } from './mock/in-memory-api.service';
+import { MockDbService } from './mock/mock-db.service';
 import { AppointmentListComponent } from './pages/appointment/list/list.component';
 import { AppointmentShowComponent } from './pages/appointment/show/show.component';
 import { AppointmentApi } from './apis/appointment.api';
@@ -27,7 +27,7 @@ import { DoctorNamePipe } from './pipes/doctor-name.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(InMemoryApiService),
+    InMemoryWebApiModule.forRoot(MockDbService),
     AppRoutingModule,
   ],
   providers: [AppointmentApi, DoctorApi, PatientApi],

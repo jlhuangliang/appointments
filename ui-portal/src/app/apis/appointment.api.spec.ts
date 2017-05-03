@@ -3,12 +3,12 @@ import { async, inject, TestBed } from '@angular/core/testing';
 import { AppointmentApi } from './appointment.api';
 import { HttpModule } from '@angular/http';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryApiService } from '../mock/in-memory-api.service';
+import { MockDbService } from '../mock/mock-db.service';
 
 describe('AppointmentApi', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(InMemoryApiService)],
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
       providers: [AppointmentApi],
     });
   });
