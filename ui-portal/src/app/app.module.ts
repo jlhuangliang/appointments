@@ -33,7 +33,7 @@ import { PatientNamePipe } from './pipes/patient-name.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    InMemoryWebApiModule.forRoot(MockDbService),
+    // InMemoryWebApiModule.forRoot(MockDbService),
     AppRoutingModule,
   ],
   providers: [AppointmentApi, DoctorApi, PatientApi],
