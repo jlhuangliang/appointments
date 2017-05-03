@@ -2,28 +2,28 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppointmentShowComponent } from './show.component';
 import { MockRouterLinkDirective } from '../../../mock/router-link.directive';
-import { appointments } from '../../../mock/appointments';
-import { AppointmentModel } from '../../../models/appointment.model';
-import { Observable } from 'rxjs/Observable';
 import { AppointmentApi } from '../../../apis/appointment.api';
 import { ActivatedRoute } from '@angular/router';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
+import { HttpModule } from '@angular/http';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MockDbService } from '../../../mock/mock-db.service';
+import { DoctorApi } from '../../../apis/doctor.api';
 
-describe('AppointmentShowComponent', () => {
+fdescribe('AppointmentShowComponent', () => {
   let component: AppointmentShowComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<AppointmentShowComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
       declarations: [AppointmentShowComponent, MockRouterLinkDirective, DoctorNamePipe],
       providers: [
-        {
-          provide: AppointmentApi,
-          useValue: {get: () => Observable.of(appointments[0]).map(AppointmentModel.of)},
-        },
+        AppointmentApi,
+        DoctorApi,
         {
           provide: ActivatedRoute,
           useValue: {
@@ -39,11 +39,15 @@ describe('AppointmentShowComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach((done) => {
     fixture = TestBed.createComponent(AppointmentShowComponent);
     component = fixture.componentInstance;
     element = fixture.debugElement;
     fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      done();
+    });
   });
 
   it('should create', () => {

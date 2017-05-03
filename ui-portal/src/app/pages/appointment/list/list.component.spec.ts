@@ -4,23 +4,24 @@ import { AppointmentListComponent } from './list.component';
 import { MockRouterLinkDirective } from '../../../mock/router-link.directive';
 import { AppointmentApi } from '../../../apis/appointment.api';
 import 'rxjs/add/observable/of';
-import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
 import { DoctorApi } from '../../../apis/doctor.api';
-import { ConnectionBackend } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { HttpModule } from '@angular/http';
+import { MockDbService } from '../../../mock/mock-db.service';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { By } from '@angular/platform-browser';
 
-fdescribe('AppointmentListComponent', () => {
+describe('AppointmentListComponent', () => {
   let component: AppointmentListComponent;
   let element: DebugElement;
   let fixture: ComponentFixture<AppointmentListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
       declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe],
       providers: [
-        {provide: ConnectionBackend, useClass: MockBackend},
         AppointmentApi,
         DoctorApi,
       ],
@@ -28,11 +29,15 @@ fdescribe('AppointmentListComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach((done) => {
     fixture = TestBed.createComponent(AppointmentListComponent);
     component = fixture.componentInstance;
     element = fixture.debugElement;
     fixture.detectChanges();
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      done();
+    });
   });
 
   it('should create', () => {

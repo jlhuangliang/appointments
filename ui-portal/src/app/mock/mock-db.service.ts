@@ -5,7 +5,7 @@ import { doctors } from './doctors';
 import { patients } from './patients';
 
 @Injectable()
-export class InMemoryApiService implements InMemoryDbService {
+export class MockDbService implements InMemoryDbService {
   constructor() {
   }
 
