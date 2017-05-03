@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { PatientModel } from '../models/patient.model';
 import { Http } from '@angular/http';
+import { extractData } from './extract-data';
 
 @Injectable()
 export class PatientApi {
@@ -11,13 +12,13 @@ export class PatientApi {
 
   query(): Observable<PatientModel[]> {
     return this.http.get('/api/patients')
-      .map(resp => resp.json().data)
+      .map(extractData)
       .map(PatientModel.from);
   }
 
   get(id: string): Observable<PatientModel> {
     return this.http.get(`/api/patients/${id}`)
-      .map(resp => resp.json().data)
+      .map(extractData)
       .map(PatientModel.of);
   }
 }

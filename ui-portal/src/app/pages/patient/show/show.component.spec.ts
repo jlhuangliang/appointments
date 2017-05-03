@@ -16,7 +16,7 @@ describe('PatientShowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
       declarations: [PatientShowComponent],
       providers: [PatientApi,
         {

@@ -21,7 +21,7 @@ describe('AppointmentShowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
       declarations: [AppointmentShowComponent, MockRouterLinkDirective, DoctorNamePipe, PatientNamePipe],
       providers: [
         AppointmentApi,

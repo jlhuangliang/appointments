@@ -8,7 +8,7 @@ import { HttpModule } from '@angular/http';
 describe('DoctorApi', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
       providers: [DoctorApi],
     });
   });

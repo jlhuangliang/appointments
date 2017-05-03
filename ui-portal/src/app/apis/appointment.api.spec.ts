@@ -8,7 +8,7 @@ import { MockDbService } from '../mock/mock-db.service';
 describe('AppointmentApi', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
+      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
       providers: [AppointmentApi],
     });
   });
