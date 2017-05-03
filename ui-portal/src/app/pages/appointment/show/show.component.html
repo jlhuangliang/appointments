@@ -8,7 +8,11 @@
     </a>
   </dd>
   <dt>Patient</dt>
-  <dd>{{item.patientId}}</dd>
+  <dd>
+    <a [routerLink]="['/patients', item.patientId]">
+      {{item.patientId|patientName|async}}
+    </a>
+  </dd>
   <dt>Start Time</dt>
   <dd>{{item.start|date}}</dd>
   <dt>End Time</dt>

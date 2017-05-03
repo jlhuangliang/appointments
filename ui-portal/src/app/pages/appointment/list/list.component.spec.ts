@@ -11,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import { MockDbService } from '../../../mock/mock-db.service';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { By } from '@angular/platform-browser';
+import { PatientNamePipe } from '../../../pipes/patient-name.pipe';
+import { PatientApi } from '../../../apis/patient.api';
 
 describe('AppointmentListComponent', () => {
   let component: AppointmentListComponent;
@@ -20,10 +22,11 @@ describe('AppointmentListComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
-      declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe],
+      declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe, PatientNamePipe],
       providers: [
         AppointmentApi,
         DoctorApi,
+        PatientApi,
       ],
     })
       .compileComponents();
