@@ -22,7 +22,11 @@
         {{item.doctorId|doctorName|async}}
       </a>
     </td>
-    <td>{{item.patientId}}</td>
+    <td>
+      <a [routerLink]="['/patients', item.patientId]">
+        {{item.patientId|patientName|async}}
+      </a>
+    </td>
     <td>{{item.start|date}}</td>
     <td>{{item.end|date}}</td>
   </tr>

@@ -9,6 +9,7 @@ describe('DoctorApi', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService)],
+      providers: [DoctorApi],
     });
   });
 
