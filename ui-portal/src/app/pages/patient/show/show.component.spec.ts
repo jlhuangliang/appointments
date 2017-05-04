@@ -1,13 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PatientShowComponent } from './show.component';
-import { HttpModule } from '@angular/http';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { MockDbService } from '../../../mock/mock-db.service';
 import { PatientApi } from '../../../apis/patient.api';
 import { ActivatedRoute } from '@angular/router';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
+import { mockApiModules } from '../../../mock/mock-api-module';
 
 describe('PatientShowComponent', () => {
   let component: PatientShowComponent;
@@ -16,7 +14,7 @@ describe('PatientShowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
+      imports: [...mockApiModules],
       declarations: [PatientShowComponent],
       providers: [PatientApi,
         {
