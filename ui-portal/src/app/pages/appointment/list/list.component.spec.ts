@@ -1,18 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AppointmentListComponent } from './list.component';
-import { MockRouterLinkDirective } from '../../../mock/router-link.directive';
 import { AppointmentApi } from '../../../apis/appointment.api';
 import 'rxjs/add/observable/of';
 import { DebugElement } from '@angular/core';
 import { DoctorNamePipe } from '../../../pipes/doctor-name.pipe';
 import { DoctorApi } from '../../../apis/doctor.api';
-import { HttpModule } from '@angular/http';
-import { MockDbService } from '../../../mock/mock-db.service';
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { By } from '@angular/platform-browser';
 import { PatientNamePipe } from '../../../pipes/patient-name.pipe';
 import { PatientApi } from '../../../apis/patient.api';
+import { mockApiModules } from '../../../mock/mock-api-module';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AppointmentListComponent', () => {
   let component: AppointmentListComponent;
@@ -21,8 +19,8 @@ describe('AppointmentListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpModule, InMemoryWebApiModule.forRoot(MockDbService, {delay: 0})],
-      declarations: [AppointmentListComponent, MockRouterLinkDirective, DoctorNamePipe, PatientNamePipe],
+      imports: [...mockApiModules, RouterTestingModule],
+      declarations: [AppointmentListComponent, DoctorNamePipe, PatientNamePipe],
       providers: [
         AppointmentApi,
         DoctorApi,
