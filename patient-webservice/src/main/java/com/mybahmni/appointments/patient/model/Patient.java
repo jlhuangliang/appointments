@@ -1,5 +1,5 @@
 
-package com.mybahmni.appointments.patient.dtos;
+package com.mybahmni.appointments.patient.model;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.IOException;
 import java.util.Date;
 
-public class PatientDTO {
+public class Patient {
 
 	private String patientId;
 
@@ -18,12 +18,12 @@ public class PatientDTO {
 
 	private Date posted;
 
-	public PatientDTO() {
+	public Patient() {
 		super();
 
 	}
 
-	public PatientDTO(String patientId, String name, Date posted) {
+	public Patient(String patientId, String name, Date posted) {
 		super();
 		this.patientId = patientId;
 		this.name = name;

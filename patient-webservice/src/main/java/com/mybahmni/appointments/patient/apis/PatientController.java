@@ -1,6 +1,6 @@
 package com.mybahmni.appointments.patient.apis;
 
-import com.mybahmni.appointments.patient.dtos.PatientDTO;
+import com.mybahmni.appointments.patient.model.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -24,26 +24,26 @@ public class PatientController {
 
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-    private List<PatientDTO> patients = null;
+    private List<Patient> patients = null;
 
     @Autowired
     public PatientController(@Value("${instance.name}") String instanceName) throws ParseException {
 
         this.patients = Arrays.asList(
-            new PatientDTO("p001", "Zhang San" + instanceName, formatter.parse("2016-04-23")),
-            new PatientDTO("p002", "Li Si" + instanceName, formatter.parse("2016-05-12")),
-            new PatientDTO("p003", "Wang Er" + instanceName, formatter.parse("2016-04-27")));
+            new Patient("p001", "Zhang San" + instanceName, formatter.parse("2016-04-23")),
+            new Patient("p002", "Li Si" + instanceName, formatter.parse("2016-05-12")),
+            new Patient("p003", "Wang Er" + instanceName, formatter.parse("2016-04-27")));
     }
 
     @GetMapping
-    public List<PatientDTO> getPatients() {
+    public List<Patient> getPatients() {
 
         return patients;
     }
 
     @RequestMapping(value = "/{patientsId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public PatientDTO getDoctorByDoctorId(@PathVariable("patientsId") final String patientsId) {
-        Optional<PatientDTO> doctor = patients.stream().filter(c -> Objects.equals(c.getPatientId(), patientsId)).findAny();
+    public Patient getDoctorByDoctorId(@PathVariable("patientsId") final String patientsId) {
+        Optional<Patient> doctor = patients.stream().filter(c -> Objects.equals(c.getPatientId(), patientsId)).findAny();
 
         return doctor.isPresent() ? doctor.get() : null;
     }
