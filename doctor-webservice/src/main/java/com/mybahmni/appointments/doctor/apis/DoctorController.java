@@ -15,17 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * REST endpoint for the doctors functionality<br>
- * <br>
- * 
- * Note that this endpoint is supposed to be consumed by the Task webservice and
- * is not accessible to the general public; i.e. the api-gateway doesn't handle
- * requests for doctors-webservice.
- * 
- * @author anilallewar
- *
- */
 @RestController
 @RequestMapping("/doctors")
 public class DoctorController {
@@ -34,12 +23,6 @@ public class DoctorController {
 
 	private List<DoctorDTO> doctors = null;
 
-	/**
-	 * Public constructor to initialize the doctors and handle the
-	 * ParseException
-	 * 
-	 * @throws ParseException
-	 */
 	public DoctorController() throws ParseException {
 		this.doctors = Arrays.asList(
 				new DoctorDTO("d001", "Li Shizhen", formatter.parse("2015-04-23")),
@@ -47,11 +30,6 @@ public class DoctorController {
 				new DoctorDTO("d003", "Zhang Zhongjing", formatter.parse("2015-04-27")));
 	}
 
-	/**
-	 * Get doctors for specific taskid that is passed in the path.
-	 * 
-	 * @return
-	 */
 	@GetMapping
 	public List<DoctorDTO> getCommentsByTaskId() {
 

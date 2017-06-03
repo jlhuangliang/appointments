@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.mybahmni.appointments.patient.dtos;
 
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -12,35 +10,19 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.IOException;
 import java.util.Date;
 
-/**
- * Represents comments on Task.
- *
- */
 public class PatientDTO {
 
-	/** The task id. */
 	private String patientId;
 
-	/** The name. */
 	private String name;
 
-	/** The completed. */
 	private Date posted;
 
-	/**
-	 * Instantiates a new task dto.
-	 */
 	public PatientDTO() {
 		super();
 
 	}
 
-	/**
-	 * Instantiates a new task dto.
-	 *
-	 * @param patientId
-	 *            the task id
-	 */
 	public PatientDTO(String patientId, String name, Date posted) {
 		super();
 		this.patientId = patientId;
@@ -64,30 +46,17 @@ public class PatientDTO {
 		this.name = name;
 	}
 
-	/**
-	 * @return the posted
-	 */
 	@JsonSerialize(using = CustomDateToLongSerializer.class)
 	public Date getPosted() {
 		return posted;
 	}
 
-	/**
-	 * @param posted
-	 *            the posted to set
-	 */
 	public void setPosted(Date posted) {
 		this.posted = posted;
 	}
 
 }
 
-/**
- * Custom date serializer that converts the date to long before sending it out
- *
- * @author anilallewar
- *
- */
 class CustomDateToLongSerializer extends JsonSerializer<Date> {
 
 	@Override

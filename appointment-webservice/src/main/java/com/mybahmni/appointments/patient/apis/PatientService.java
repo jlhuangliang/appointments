@@ -11,17 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Date;
 
-/**
- * The {@link HystrixCommand} works since Spring makes a proxy to intercept the
- * request and call the fallback method if the method errs.<br>
- * <br>
- * 
- * Hence the {@link HystrixCommand} needs to be in separate {@link Component} or
- * {@link Service} stereotypes so that Spring can proxy them.
- * 
- * @author anilallewar
- *
- */
 @Service
 public class PatientService {
 

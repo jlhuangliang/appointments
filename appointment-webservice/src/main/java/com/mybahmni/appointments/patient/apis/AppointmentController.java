@@ -14,10 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * REST endpoint for the task functionality
- * 
- */
 @RestController
 @RequestMapping("/")
 public class AppointmentController {
@@ -41,22 +37,11 @@ public class AppointmentController {
 
 	}
 
-	/**
-	 * Get all appointments
-	 * 
-	 * @return
-	 */
 	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
 	public List<AppointmentDTO> getAppointments() {
 		return appointments;
 	}
 
-	/**
-	 * Get appointments for specific taskid
-	 * 
-	 * @param appointmentId
-	 * @return
-	 */
 	@RequestMapping(value = "{appointmentId}", method = RequestMethod.GET, headers = "Accept=application/json")
 	public AppointmentDTO getTaskByTaskId(@PathVariable("appointmentId") String appointmentId) {
 		AppointmentDTO appointmentToReturn = null;
@@ -77,4 +62,10 @@ public class AppointmentController {
 		return appointmentToReturn;
 	}
 
+
+	@RequestMapping(value = "patients/{patientId}", method = RequestMethod.GET, headers = "Accept=application/json")
+	public PatientResource getPatientById(@PathVariable("patientId") String patientId) {
+
+		return patientService.getPatientForAppointment(patientId);
+	}
 }
