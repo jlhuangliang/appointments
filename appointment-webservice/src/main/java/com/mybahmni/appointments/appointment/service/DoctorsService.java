@@ -8,10 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name = "doctor-webservice", fallback = HystrixClientFallback.class)
 public interface DoctorsService {
 
-//    @HystrixCommand(fallbackMethod = "getFallbackCommentsForTask", commandProperties = {
-//        @HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE"), @HystrixProperty(name =
-//        "circuitBreaker.requestVolumeThreshold", value = "10"), @HystrixProperty(name = "circuitBreaker" +
-//		".sleepWindowInMilliseconds", value = "1000")})
     @RequestMapping("/doctors/{doctorId}")
     Doctor getDoctorForAppointment(@PathVariable("doctorId") String doctorId);
 
