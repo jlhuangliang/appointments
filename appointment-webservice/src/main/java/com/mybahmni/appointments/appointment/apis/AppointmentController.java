@@ -5,9 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-import com.mybahmni.appointments.appointment.dtos.AppointmentDTO;
-import com.mybahmni.appointments.appointment.model.DoctorResource;
-import com.mybahmni.appointments.appointment.model.PatientResource;
+import com.mybahmni.appointments.appointment.model.Appointment;
+import com.mybahmni.appointments.appointment.model.Doctor;
+import com.mybahmni.appointments.appointment.model.Patient;
+import com.mybahmni.appointments.appointment.service.DoctorsService;
+import com.mybahmni.appointments.appointment.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,10 +29,10 @@ public class AppointmentController {
 	@Autowired
 	private PatientService patientService;
 
-	private List<AppointmentDTO> appointments = Arrays.asList(
-		new AppointmentDTO("a001", "d001", "p001",
+	private List<Appointment> appointments = Arrays.asList(
+		new Appointment("a001", "d001", "p001",
 			formatter.parse("2017-05-01 14:00"), formatter.parse("2017-05-01 15:00")),
-		new AppointmentDTO("a002", "d001", "p002",
+		new Appointment("a002", "d001", "p002",
 			formatter.parse("2017-05-01 16:00"), formatter.parse("2017-05-01 17:00")));
 
 	public AppointmentController() throws ParseException {
@@ -38,14 +40,14 @@ public class AppointmentController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET, headers = "Accept=application/json")
-	public List<AppointmentDTO> getAppointments() {
+	public List<Appointment> getAppointments() {
 		return appointments;
 	}
 
 	@RequestMapping(value = "{appointmentId}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public AppointmentDTO getTaskByTaskId(@PathVariable("appointmentId") String appointmentId) {
-		AppointmentDTO appointmentToReturn = null;
-		for (AppointmentDTO currentTask : appointments) {
+	public Appointment getTaskByTaskId(@PathVariable("appointmentId") String appointmentId) {
+		Appointment appointmentToReturn = null;
+		for (Appointment currentTask : appointments) {
 			if (currentTask.getAppointmentId().equalsIgnoreCase(appointmentId)) {
 				appointmentToReturn = currentTask;
 				break;
@@ -53,9 +55,9 @@ public class AppointmentController {
 		}
 
 		if (appointmentToReturn != null) {
-			DoctorResource doctor = this.doctorsService.getDoctorForAppointment(appointmentToReturn.getDoctorId());
+			Doctor doctor = this.doctorsService.getDoctorForAppointment(appointmentToReturn.getDoctorId());
 			appointmentToReturn.setDoctor(doctor);
-			PatientResource patient = patientService.getPatientForAppointment(appointmentToReturn.getPatientId());
+			Patient patient = patientService.getPatientForAppointment(appointmentToReturn.getPatientId());
 			appointmentToReturn.setPatient(patient);
 		}
 
@@ -64,7 +66,7 @@ public class AppointmentController {
 
 
 	@RequestMapping(value = "patients/{patientId}", method = RequestMethod.GET, headers = "Accept=application/json")
-	public PatientResource getPatientById(@PathVariable("patientId") String patientId) {
+	public Patient getPatientById(@PathVariable("patientId") String patientId) {
 
 		return patientService.getPatientForAppointment(patientId);
 	}

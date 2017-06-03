@@ -6,105 +6,59 @@ import com.mybahmni.appointments.appointment.common.CustomDateToStringSerializer
 
 import java.util.Date;
 
-/**
- * Represents comments on Task.
- *
- * @author anilallewar
- */
-public class DoctorResource {
+public class Doctor {
 
     public static final String JP_DOCTORID = "doctorId";
     public static final String JP_NAME = "name";
     public static final String JP_POSTED = "posted";
 
-    /**
-     * The task id.
-     */
     private String doctorId;
 
-    /**
-     * The last name.
-     */
     private String name;
 
-    /**
-     * The completed.
-     */
     private Date posted;
 
-    /**
-     * Instantiates a new name resource
-     */
-    public DoctorResource() {
+    public Doctor() {
         super();
 
     }
 
-    /**
-     * Instantiates a new name resource
-     *
-     * @param doctorId
-     * @param comment
-     * @param posted
-     */
-    public DoctorResource(String doctorId, String comment, Date posted) {
+    public Doctor(String doctorId, String comment, Date posted) {
         super();
         this.doctorId = doctorId;
         this.name = comment;
         this.posted = posted;
     }
 
-    /**
-     * @return the doctorId
-     */
     @JsonProperty(JP_DOCTORID)
     public String getDoctorId() {
         return doctorId;
     }
 
-    /**
-     * @param doctorId the doctorId to set
-     */
     public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
 
-    /**
-     * @return the name
-     */
     @JsonProperty(JP_NAME)
     public String getName() {
         return name;
     }
 
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @return the posted
-     */
+
     @JsonProperty(JP_POSTED)
     @JsonSerialize(using = CustomDateToStringSerializer.class)
     public Date getPosted() {
         return posted;
     }
 
-    /**
-     * @param posted the posted to set
-     */
     public void setPosted(Date posted) {
         this.posted = posted;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -115,11 +69,6 @@ public class DoctorResource {
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -128,7 +77,7 @@ public class DoctorResource {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DoctorResource other = (DoctorResource) obj;
+        Doctor other = (Doctor) obj;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -147,14 +96,9 @@ public class DoctorResource {
         return true;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString() {
-        return "DoctorResource [doctorId=" + doctorId + ", name=" + name + ", posted=" + posted + "]";
+        return "Doctor [doctorId=" + doctorId + ", name=" + name + ", posted=" + posted + "]";
     }
 
 }

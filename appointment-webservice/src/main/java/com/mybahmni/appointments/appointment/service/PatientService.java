@@ -1,6 +1,6 @@
-package com.mybahmni.appointments.appointment.apis;
+package com.mybahmni.appointments.appointment.service;
 
-import com.mybahmni.appointments.appointment.model.PatientResource;
+import com.mybahmni.appointments.appointment.model.Patient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,15 @@ public class PatientService {
         @HystrixProperty(name = "execution.isolation.strategy", value = "SEMAPHORE"),
         @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
         @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000")})
-    public PatientResource getPatientForAppointment(String doctorId) {
+    public Patient getPatientForAppointment(String doctorId) {
         String url = String.format("http://patient-webservice/patients/%s", doctorId);
-        return restTemplate.getForObject(url, PatientResource.class);
+        return restTemplate.getForObject(url, Patient.class);
 
     }
 
     @SuppressWarnings("unused")
-    private PatientResource getFallbackPatientForAppointment(String taskId) {
+    private Patient getFallbackPatientForAppointment(String taskId) {
 
-        return new PatientResource("default", "default appointment", new Date());
+        return new Patient("default", "default appointment", new Date());
     }
 }

@@ -1,15 +1,9 @@
-package com.mybahmni.appointments.appointment.apis;
+package com.mybahmni.appointments.appointment.service;
 
-import com.mybahmni.appointments.appointment.model.DoctorResource;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.mybahmni.appointments.appointment.model.Doctor;
 import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.Date;
 
 @FeignClient(name = "doctor-webservice", fallback = HystrixClientFallback.class)
 public interface DoctorsService {
@@ -19,7 +13,7 @@ public interface DoctorsService {
 //        "circuitBreaker.requestVolumeThreshold", value = "10"), @HystrixProperty(name = "circuitBreaker" +
 //		".sleepWindowInMilliseconds", value = "1000")})
     @RequestMapping("/doctors/{doctorId}")
-    DoctorResource getDoctorForAppointment(@PathVariable("doctorId") String doctorId);
+    Doctor getDoctorForAppointment(@PathVariable("doctorId") String doctorId);
 
 }
 

@@ -1,17 +1,9 @@
-/**
- *
- */
-package com.mybahmni.appointments.appointment.dtos;
 
-import com.mybahmni.appointments.appointment.model.DoctorResource;
-import com.mybahmni.appointments.appointment.model.PatientResource;
+package com.mybahmni.appointments.appointment.model;
 
 import java.util.Date;
 
-/**
- * Represents Todo Task.
- */
-public class AppointmentDTO {
+public class Appointment {
 
     private String appointmentId;
     private String doctorId;
@@ -20,24 +12,15 @@ public class AppointmentDTO {
     private Date start;
     private Date end;
 
-    private DoctorResource doctor;
-    private PatientResource patient;
+    private Doctor doctor;
+    private Patient patient;
 
-    /**
-     * Instantiates a new task dto.
-     */
-    public AppointmentDTO() {
+    public Appointment() {
         super();
 
     }
 
-    /**
-     * Instantiates a new task dto.
-     *
-     * @param appointmentId the task id
-     * @param doctorId      the doctorId
-     */
-    public AppointmentDTO(String appointmentId, String doctorId, String patientId, Date start, Date end) {
+    public Appointment(String appointmentId, String doctorId, String patientId, Date start, Date end) {
         super();
         this.appointmentId = appointmentId;
         this.doctorId = doctorId;
@@ -86,19 +69,19 @@ public class AppointmentDTO {
         this.end = end;
     }
 
-    public DoctorResource getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(DoctorResource doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
     }
 
-    public PatientResource getPatient() {
+    public Patient getPatient() {
         return patient;
     }
 
-    public void setPatient(PatientResource patient) {
+    public void setPatient(Patient patient) {
         this.patient = patient;
     }
 }
