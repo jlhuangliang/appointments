@@ -8,4 +8,7 @@ spring:
                     searchLocations: classpath:repo/
 
 server:
-  port: 8888          
+  port: 8888
+
+
+

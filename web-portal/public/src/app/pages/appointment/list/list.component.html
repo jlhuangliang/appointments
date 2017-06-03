@@ -1,0 +1,34 @@
+<h3>Appointment List</h3>
+
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Doctor</th>
+    <th>Patient</th>
+    <th>Start</th>
+    <th>End</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items">
+    <td>
+      <a [routerLink]="[item.appointmentId]">
+        {{item.appointmentId}}
+      </a>
+    </td>
+    <td>
+      <a [routerLink]="['/doctors', item.doctorId]">
+        {{item.doctorId|doctorName|async}}
+      </a>
+    </td>
+    <td>
+      <a [routerLink]="['/patients', item.patientId]">
+        {{item.patientId|patientName|async}}
+      </a>
+    </td>
+    <td>{{item.start|date}}</td>
+    <td>{{item.end|date}}</td>
+  </tr>
+  </tbody>
+</table>

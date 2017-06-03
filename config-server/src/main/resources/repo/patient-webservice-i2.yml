@@ -1,5 +1,8 @@
+instance:
+  name: "[i2]"
+
 server:
-  port: 8084
+  port: 18082
 
 eureka:
   client:

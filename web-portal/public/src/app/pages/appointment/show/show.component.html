@@ -1,0 +1,20 @@
+<dl *ngIf="item">
+  <dt>ID</dt>
+  <dd>{{item.appointmentId}}</dd>
+  <dt>Doctor</dt>
+  <dd>
+    <a [routerLink]="['/doctors', item.doctorId]">
+      {{item.doctorId|doctorName|async}}
+    </a>
+  </dd>
+  <dt>Patient</dt>
+  <dd>
+    <a [routerLink]="['/patients', item.patientId]">
+      {{item.patientId|patientName|async}}
+    </a>
+  </dd>
+  <dt>Start Time</dt>
+  <dd>{{item.start|date}}</dd>
+  <dt>End Time</dt>
+  <dd id="end-time">{{item.end|date}}</dd>
+</dl>

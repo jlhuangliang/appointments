@@ -1,3 +1,5 @@
+instance:
+  name: "[i1]"
 server:
   port: 8082
 
