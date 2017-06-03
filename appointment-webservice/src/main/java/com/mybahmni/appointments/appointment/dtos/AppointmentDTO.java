@@ -1,10 +1,10 @@
 /**
  *
  */
-package com.mybahmni.appointments.patient.dtos;
+package com.mybahmni.appointments.appointment.dtos;
 
-import com.mybahmni.appointments.patient.model.DoctorResource;
-import com.mybahmni.appointments.patient.model.PatientResource;
+import com.mybahmni.appointments.appointment.model.DoctorResource;
+import com.mybahmni.appointments.appointment.model.PatientResource;
 
 import java.util.Date;
 

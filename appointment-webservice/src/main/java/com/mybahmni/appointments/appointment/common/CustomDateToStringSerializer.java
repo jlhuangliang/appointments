@@ -1,4 +1,4 @@
-package com.mybahmni.appointments.patient.common;
+package com.mybahmni.appointments.appointment.common;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;

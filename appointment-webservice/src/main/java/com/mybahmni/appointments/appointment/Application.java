@@ -1,4 +1,4 @@
-package com.mybahmni.appointments.patient;
+package com.mybahmni.appointments.appointment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

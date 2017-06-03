@@ -1,8 +1,8 @@
-package com.mybahmni.appointments.patient.model;
+package com.mybahmni.appointments.appointment.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.mybahmni.appointments.patient.common.CustomDateToStringSerializer;
+import com.mybahmni.appointments.appointment.common.CustomDateToStringSerializer;
 
 import java.util.Date;
 
@@ -11,16 +11,16 @@ import java.util.Date;
  *
  * @author anilallewar
  */
-public class DoctorResource {
+public class PatientResource {
 
-    public static final String JP_DOCTORID = "doctorId";
+    public static final String JP_DOCTORID = "patientId";
     public static final String JP_NAME = "name";
     public static final String JP_POSTED = "posted";
 
     /**
      * The task id.
      */
-    private String doctorId;
+    private String patientId;
 
     /**
      * The last name.
@@ -35,7 +35,7 @@ public class DoctorResource {
     /**
      * Instantiates a new name resource
      */
-    public DoctorResource() {
+    public PatientResource() {
         super();
 
     }
@@ -43,30 +43,30 @@ public class DoctorResource {
     /**
      * Instantiates a new name resource
      *
-     * @param doctorId
+     * @param patientId
      * @param comment
      * @param posted
      */
-    public DoctorResource(String doctorId, String comment, Date posted) {
+    public PatientResource(String patientId, String comment, Date posted) {
         super();
-        this.doctorId = doctorId;
+        this.patientId = patientId;
         this.name = comment;
         this.posted = posted;
     }
 
     /**
-     * @return the doctorId
+     * @return the patientId
      */
     @JsonProperty(JP_DOCTORID)
-    public String getDoctorId() {
-        return doctorId;
+    public String getPatientId() {
+        return patientId;
     }
 
     /**
-     * @param doctorId the doctorId to set
+     * @param patientId the patientId to set
      */
-    public void setDoctorId(String doctorId) {
-        this.doctorId = doctorId;
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
     }
 
     /**
@@ -111,7 +111,7 @@ public class DoctorResource {
         int result = 1;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((posted == null) ? 0 : posted.hashCode());
-        result = prime * result + ((doctorId == null) ? 0 : doctorId.hashCode());
+        result = prime * result + ((patientId == null) ? 0 : patientId.hashCode());
         return result;
     }
 
@@ -128,7 +128,7 @@ public class DoctorResource {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DoctorResource other = (DoctorResource) obj;
+        PatientResource other = (PatientResource) obj;
         if (name == null) {
             if (other.name != null)
                 return false;
@@ -139,10 +139,10 @@ public class DoctorResource {
                 return false;
         } else if (!posted.equals(other.posted))
             return false;
-        if (doctorId == null) {
-            if (other.doctorId != null)
+        if (patientId == null) {
+            if (other.patientId != null)
                 return false;
-        } else if (!doctorId.equals(other.doctorId))
+        } else if (!patientId.equals(other.patientId))
             return false;
         return true;
     }
@@ -154,7 +154,7 @@ public class DoctorResource {
      */
     @Override
     public String toString() {
-        return "DoctorResource [doctorId=" + doctorId + ", name=" + name + ", posted=" + posted + "]";
+        return "DoctorResource [patientId=" + patientId + ", name=" + name + ", posted=" + posted + "]";
     }
 
 }

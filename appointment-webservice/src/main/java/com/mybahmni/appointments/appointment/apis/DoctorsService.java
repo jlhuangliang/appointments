@@ -1,6 +1,6 @@
-package com.mybahmni.appointments.patient.apis;
+package com.mybahmni.appointments.appointment.apis;
 
-import com.mybahmni.appointments.patient.model.DoctorResource;
+import com.mybahmni.appointments.appointment.model.DoctorResource;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;

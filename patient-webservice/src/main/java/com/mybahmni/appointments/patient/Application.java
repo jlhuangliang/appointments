@@ -1,3 +1,4 @@
+
 package com.mybahmni.appointments.patient;
 
 import org.springframework.boot.SpringApplication;

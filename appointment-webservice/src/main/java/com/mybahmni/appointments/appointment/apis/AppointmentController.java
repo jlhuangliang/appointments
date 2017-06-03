@@ -1,13 +1,13 @@
-package com.mybahmni.appointments.patient.apis;
+package com.mybahmni.appointments.appointment.apis;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 
-import com.mybahmni.appointments.patient.dtos.AppointmentDTO;
-import com.mybahmni.appointments.patient.model.DoctorResource;
-import com.mybahmni.appointments.patient.model.PatientResource;
+import com.mybahmni.appointments.appointment.dtos.AppointmentDTO;
+import com.mybahmni.appointments.appointment.model.DoctorResource;
+import com.mybahmni.appointments.appointment.model.PatientResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
