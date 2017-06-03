@@ -46,7 +46,7 @@ dependencyManagement {
     imports {
         mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Camden.SR6'
     }
-}RibbonConfiguration
+}
 
 
 group = 'mybahmni'
