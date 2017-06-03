@@ -21,7 +21,7 @@ apply plugin: 'docker'
 
 
 jar {
-    baseName = 'repo-server'
+    baseName = 'config-server'
     version =  '0.0.1'
 }
 
@@ -38,7 +38,7 @@ dependencies {
     testCompile 'org.springframework:spring-test:4.0.6.RELEASE'
 }
 
-group = 'anilallewar'
+group = 'mybahmni'
 mainClassName = 'com.mybahmni.appointments.config.Application'
 
 sourceCompatibility = 1.7
