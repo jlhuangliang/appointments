@@ -20,7 +20,7 @@ public class PatientService {
         @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
         @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "1000")})
     public PatientResource getPatientForAppointment(String doctorId) {
-        String url = String.format("http://appointment-webservice/patients/%s", doctorId);
+        String url = String.format("http://patient-webservice/patients/%s", doctorId);
         return restTemplate.getForObject(url, PatientResource.class);
 
     }
